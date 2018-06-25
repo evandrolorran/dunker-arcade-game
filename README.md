@@ -5,12 +5,12 @@ Dunker The Game - Front-End Advanced-Nanodegree
 <img src="./dunker-screenshot.png" width="500" height="600" align="right"> 
 
 ## Description
-A different version of the classic arcade game Frogger, this is a minimalist 2D game which the objective is to make the Dunk after avoiding the enemies(Hands) around the court.
+This is a different version of the classic arcade game Frogger, this is a minimalist 2D game which the objective is to make the Dunk after avoiding the enemies(Hands) around the court.
 
 ## How to View This Page
 Clone or download this repository, then open _index.html_ in your browser.
 
-The easiest way is to play the game is by clicking the link below:
+The easiest way to play the game is by clicking the link below:
 
 https://evandrolorran.github.io/dunker-arcade-game/
 
@@ -38,7 +38,7 @@ evandrolorran@gmail.com
 ### Special Thanks / Mentions
 Player full image created by [ERIC PENG](http://www.shakethecan.net/about/)
 
-### Front-end Nanodegree guide to this project
+## Front-end Nanodegree guide to this project
 
 Students should use this [rubric](https://review.udacity.com/#!/projects/2696458597/rubric) for self-checking their submission. Make sure the functions you write are **object-oriented** - either class functions (like Player and Enemy) or class prototype functions such as Enemy.prototype.checkCollisions, and that the keyword 'this' is used appropriately within your class and class prototype functions to refer to the object the function is called upon. Also be sure that the **readme.md** file is updated with your instructions on both how to 1. Run and 2. Play your arcade game.
 
