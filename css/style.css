@@ -1,0 +1,135 @@
+/* ----------------------------------------------- */
+/* BASIC SETUP - HTML ELEMENTS */
+/* ----------------------------------------------- */
+
+
+html {
+    font-family: 'Luckiest Guy', cursive;
+}
+
+body {
+    text-align: center;
+    background-color: cornflowerblue;
+    overflow: hidden;
+}
+
+h1 {
+    grid-column: 1 / -1;
+    font-size: 60px;
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+h3 {
+    color: green;
+    font-size: 40px;
+}
+
+/* ----- HTML ELEMENT - KEYBOARD EFFECT BORDER ----- */
+
+ksb {
+    border:1px solid gray;
+    padding:6px 5px 0px;
+    margin:0 5px;
+    font-size:1.5em;
+    text-transform:uppercase;
+    -webkit-box-shadow:1px 0 1px 0 #fff, 0 2px 0 2px lightGray, 0 2px 0 3px #333;
+    -moz-box-shadow:1px 0 1px 0 #fff, 0 2px 0 2px lightGray, 0 2px 0 3px #333;
+    box-shadow:1px 0 1px 0 #fff, 0 2px 0 2px lightGray, 0 2px 0 3px #333;
+    -webkit-border-radius:3px;
+    -moz-border-radius:3px;
+    border-radius:3px;
+    background:-moz-linear-gradient(left, #ffffff 0%, #e2e2e2 25%);
+    background:-webkit-gradient(linear, left top, right top, color-stop(0%, #ffffff), color-stop(25%, #e2e2e2));
+    background:-webkit-linear-gradient(left, #ffffff 0%, #e2e2e2 25%);
+    background:-o-linear-gradient(left, #ffffff 0%, #e2e2e2 25%);
+    background:-ms-linear-gradient(left, #ffffff 0%, #e2e2e2 25%);
+    background:linear-gradient(left, #ffffff 0%, #e2e2e2 25%);
+}
+
+/* ----------------------------------------------- */
+/* GAME BOARD SECTION */
+/* ----------------------------------------------- */
+
+.game-board {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 100px 280px auto;
+}
+
+canvas {
+    grid-column: 2 / 3;
+    grid-row: 3 / -1;
+}
+
+/* ----------------------------------------------- */
+/* HOW TO PLAY SECTION */
+/* ----------------------------------------------- */
+
+.game-howtoplay {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+
+.game-howtoplay h2 {
+    color:black;
+    padding-top: 120px;
+}
+
+.game-howtoplay p {
+    color:black;
+}
+
+/* ----------------------------------------------- */
+/* TIMER */
+/* ----------------------------------------------- */
+
+.game-timer {
+    grid-column: 2 / 3 ;
+    grid-row: 2 / 3;
+}
+
+.game-timer h1 {
+    font-size: 40px;
+    display: inline-block;
+    text-align: center;
+    width: 80px;
+    padding: 15px 20px 5px;
+    color: rgb(185, 6, 6);
+    border: 8px groove whitesmoke;
+    background-color: black;
+    margin-top: 0;
+}
+
+/* ----------------------------------------------- */
+/* SCORE */
+/* ----------------------------------------------- */
+
+.game-score {
+    grid-column: 3 / 3 ;
+    grid-row: 3 / 3;
+    padding-top: 120px;
+}
+
+.game-score h1 {
+    display: inline-block;
+    width: 80px;
+    text-align: center;
+    padding: 30px 40px 10px;
+    color: green;
+    border: 8px double black;
+    background-color: whitesmoke;
+}
+
+/* ----------------------------------------------- */
+/* GAME OVER MESSAGE */
+/* ----------------------------------------------- */
+
+.game-over{
+    grid-column: 3 / 3 ;
+    grid-row: 4 / 4;
+    margin-bottom: 120px;
+    margin-top: 0;
+    visibility: hidden;
+}
