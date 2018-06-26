@@ -19,7 +19,7 @@ var Game = function () {
 };
 
 // Initialize Game object
-game = new Game();
+var game = new Game();
 
 // Timer Function
 function startTimer(duration, display) {
@@ -32,11 +32,11 @@ function startTimer(duration, display) {
 
         display.textContent = minutes + ":" + seconds;
 
-        if (minutes == 0 && seconds == 3) {
+        if (minutes === 0 && seconds == 3) {
             game.countdownSound.play();
         }
 
-        if (--timer < 0 && game.gameOn == true) {
+        if (--timer < 0 && game.gameOn === true) {
             timer = 0;
             game.buzzerSound.play();
             game.gameOn = false;
@@ -45,8 +45,7 @@ function startTimer(duration, display) {
 
             document.getElementById('game-over').style.visibility = 'visible';
 
-            player.x = 202;
-            player.y = 405;
+            player.resetPosition();
         }
     }, 1000);
 }
@@ -62,7 +61,7 @@ function gameStart() {
     // Calls the function to load the enemies(Hands) on the board/court.
     loadEnemies();
 
-    display = document.querySelector('#time');
+    const display = document.querySelector('#time');
     game.refereeWhistleSound.play();
 
     startTimer(84, display);
@@ -86,6 +85,21 @@ var Enemy = function (x, y, speed) {
     this.sprite = 'images/hand-block.png';
 };
 
+// Function responsible to check collisions between the player and the enemies(hands)
+Enemy.prototype.checkCollision = function () {
+
+    if (player.x < this.x + 80 &&
+        player.x + 80 > this.x &&
+        player.y < this.y + 60 &&
+        60 + player.y > this.y) {
+
+        game.deniedSound.play();
+        
+        player.resetPosition();
+
+    }
+};
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function (dt) {
@@ -97,10 +111,10 @@ Enemy.prototype.update = function (dt) {
     if (this.x > 510) {
         this.x = -50;
         this.speed = 100 + Math.floor(Math.random() * 300);
-    };
+    }
 
     // Checks for collisions between the player and the enemies(hands)
-    checkCollision(this);
+    this.checkCollision();
 };
 
 // Renders the enemy into the game
@@ -111,18 +125,6 @@ Enemy.prototype.render = function () {
 // All enemies are placed in an array
 var allEnemies = [];
 
-// Function responsible to check collisions between the player and the enemies(hands)
-function checkCollision(enemy) {
-    if (player.x < enemy.x + 80 &&
-        player.x + 80 > enemy.x &&
-        player.y < enemy.y + 60 &&
-        60 + player.y > enemy.y) {
-        game.deniedSound.play();
-        player.x = 202;
-        player.y = 405;
-    };
-}
-
 // // Function responsible to load the enemies(Hands) on the board/court.
 function loadEnemies() {
 
@@ -132,7 +134,7 @@ function loadEnemies() {
     // For each enemy located on the y axis from 0 on the x axis move at a speed of 300 
     // Until randomly regenerated in the enemy update function above
     enemyLocation.forEach(function (locationY) {
-        enemy = new Enemy(0, locationY, 300);
+        let enemy = new Enemy(0, locationY, 300);
         allEnemies.push(enemy);
     });
 }
@@ -159,6 +161,12 @@ var Player = function (x, y) {
 // The starting location of the player is located at x=202, y=405
 var player = new Player(202, 405);
 
+// Reset location of the player to x=202, y=405
+Player.prototype.resetPosition = function() {
+    this.x = 202;
+    this.y = 405;
+}
+
 // Renders the image of the user into the game
 Player.prototype.render = function () {
     ctx.drawImage(Resources.get(this.player), this.x, this.y);
@@ -171,36 +179,36 @@ Player.prototype.handleInput = function (keyPress) {
     this.bounceSound = new Audio('audio/bounce.m4a');
 
     // Controls when the game will star by pressing Space Bar
-    if (keyPress == 'spacebar' && game.gameOn == false) {
+    if (keyPress == 'spacebar' && game.gameOn === false) {
         gameStart();
-    };
+    }
 
     // Enables user on left arrow key to move left on the x axis by 102
     // Prevents the player from going off the court on the left side
     if (keyPress == 'left' && this.x > 0) {
         this.x -= 102;
         this.bounceSound.play();
-    };
+    }
 
     // Enables user on right arrow key to move right on the x axis by 102
     // Prevents the player from going off the court on the right side
     if (keyPress == 'right' && this.x < 405) {
         this.x += 102;
         this.bounceSound.play();
-    };
+    }
 
     // Enables user on up arrow key to move upwards on the y axis by 83
     if (keyPress == 'up' && this.y > 0) {
         this.y -= 83;
         this.bounceSound.play();
-    };
+    }
 
     // Enables user on down arrow key to move downwards on the y axis by 83
     // Prevents the player from going off the court on the bottom
     if (keyPress == 'down' && this.y < 405) {
         this.y += 83;
         this.bounceSound.play();
-    };
+    }
 
     // Once the player reaches the basket(Make the Dunk), the user is
     // reset to the starting position after 800 milliseconds / 0.8 second.
@@ -215,12 +223,11 @@ Player.prototype.handleInput = function (keyPress) {
         }
 
         setTimeout(() => {
-            this.x = 202;
-            this.y = 405;
+            this.resetPosition();
             this.player = 'images/player-blue-ball.png';
             this.lastPosition = 0;
-        }, 800);
-    };
+        }, 600);
+    }
 };
 
 // This listens for key presses and sends the keys to your
@@ -245,7 +252,3 @@ document.addEventListener('keyup', function (e) {
         player.handleInput(allowedKeys[e.keyCode]);
     }
 });
-
-
-
-

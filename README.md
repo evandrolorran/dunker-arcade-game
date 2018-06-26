@@ -2,7 +2,7 @@ Dunker The Game - Front-End Advanced-Nanodegree
 ===============================================
 
 
-<img src="./dunker-screenshot.png" width="500" height="600" align="right"> 
+<img src="./images/dunker-screenshot.png" width="500" height="600" align="right"> 
 
 ## Description
 This is a different version of the classic arcade game Frogger, this is a minimalist 2D game which the objective is to make the Dunk after avoiding the enemies(Hands) around the court.
@@ -15,7 +15,7 @@ The easiest way to play the game is by clicking the link below:
 https://evandrolorran.github.io/dunker-arcade-game/
 
 ## How to Play - Controls
-Use left-right and up-down arrow keys to move the player from block to block. Collision with enemy(Hands) results in death and reduced score, while reaching the basket you score 2 points.
+Use left-right and up-down arrow keys to move the player from block to block. Collision with enemy(Hands) results in moving the player to start position, while reaching the basket you score 2 points.
 
 ## Tools used to create this game:
 * JavaScript
